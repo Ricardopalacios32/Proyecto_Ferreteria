@@ -1,0 +1,29 @@
+div {
+    display: flex;
+    flex-direction: column;
+    gap: .8rem; 
+}
+
+input[type = "text"], input[type = "number"], select{
+    padding: .5rem;
+    background-color: rgb(224, 224, 224);
+    color: black;
+    border: none;
+    font-size: 1rem;
+    font-weight: 400;
+    
+}
+
+input[type = "submit"] {
+    background-color: rgb(205, 174, 0);
+    border: none;
+    color: white;
+    font-weight: bolder;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-top: 10px;
+}

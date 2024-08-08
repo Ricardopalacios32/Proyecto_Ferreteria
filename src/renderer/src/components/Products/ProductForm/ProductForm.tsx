@@ -1,24 +1,39 @@
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+
+import { product } from "@renderer/types"
+import styles from './ProductForm.module.css'
 
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-export default function ProductForm() {
+type ProductFormProps = {
+    product? : product
+    handleChange : (e : React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>)=>void
+}
+
+
+export default function ProductForm({product, handleChange} : ProductFormProps) {
+
+  
+
   return (
     <>
-      <form action="">
-        <div>
+      
+        <div className={styles.div}>
           <label htmlFor="name">Nombre</label>
           <input 
             type="text" 
             className=""
-            id="name"
+            id="productName"
+            onChange={handleChange}
+            defaultValue={product?.productName}
           />
         </div>
-        <div>
+        <div className={styles.div}>
           <label htmlFor="buyprice">Precio de Compra</label>
           <input 
             type="number" 
             className=""
-            id="buyprice"
+            id="productBuyPrice"
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -26,7 +41,8 @@ export default function ProductForm() {
           <input 
             type="number" 
             className=""
-            id="sellprice"
+            id="productSellPrice"
+            onChange={handleChange}
           />
         </div>
         <div>
@@ -35,17 +51,23 @@ export default function ProductForm() {
             type="number" 
             className=""
             id="quantity"
+            
           />
         </div>
         <div>
           <label htmlFor="category">Categoria</label>
-          <select name="" id="category">
+          <select 
+            name="" 
+            id="categoryId"
+            onChange={handleChange}
+          >
             <option value="">--Seleccione una categoria--</option>
+            <option value="1">Tornillos</option>
           </select>
         </div>
         
         
-      </form>
+      
     </>
   )
 }

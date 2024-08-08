@@ -7,11 +7,10 @@ export type product = {
     quantity: number,
     categoryId: string,
     categoryName : string,
-    createdAt: Date,
-    editedAt: Date
+    
 }
 
-export type productWithId = {
+export type productWithDates = {
     id : string,
     productName : string,
     productBuyPrice : number,
@@ -19,6 +18,6 @@ export type productWithId = {
     quantity: number,
     categoryId: string,
     categoryName : string,
-    createdAt: Date,
-    editedAt: Date
+    createdAt: string,
+    editedAt?: string
 }

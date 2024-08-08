@@ -1,0 +1,39 @@
+.navbar{
+    position:fixed;
+    background-color: rgba(0, 0, 0, 0.527);
+    width: 100%;
+    padding: 10px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar ul{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+.navbar li{
+    list-style: none;
+
+}
+.navbar a{
+    text-decoration: none;
+    color: white;
+    font-size: large;
+    transition: color 0.5s ease;
+}
+
+.navbar a:hover{
+    
+    color: gold;
+    
+}
+
+
+.admin {
+    
+    margin-right: 20px;
+}
