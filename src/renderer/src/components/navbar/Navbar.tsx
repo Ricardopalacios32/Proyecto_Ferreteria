@@ -6,7 +6,7 @@ export default function Navbar() {
   return (
     <nav className={style.navbar}>
       <ul>
-        <li><Link to="/">Inventario</Link></li>
+        <li><Link to="/1">Inventario</Link></li>
         <li><Link to="/create">Crear Producto</Link></li>
       </ul>
       <Link className={style.admin} to="/auth">Admin</Link>

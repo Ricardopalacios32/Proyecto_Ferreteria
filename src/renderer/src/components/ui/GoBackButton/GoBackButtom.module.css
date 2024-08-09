@@ -1,0 +1,11 @@
+.goBackbuttom{
+    padding: 1rem;
+    color: white;
+    background-color: goldenrod;
+    font-size: 1.5rem;
+    margin-top: 8%;
+    width: 110px;
+    border: none;
+    font-weight: bold;
+    margin-left: 40px;
+}

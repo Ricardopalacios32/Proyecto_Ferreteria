@@ -1,7 +1,7 @@
 .container {
     padding-left: 26px;
     padding-right: 26px;
-    margin-top: 8%;
+    margin-top: 2%;
     
   }
   
@@ -12,6 +12,7 @@
   .tableWrapper {
     overflow-x: auto;
     background-color: white;
+    
   }
   
   .tableContainer {

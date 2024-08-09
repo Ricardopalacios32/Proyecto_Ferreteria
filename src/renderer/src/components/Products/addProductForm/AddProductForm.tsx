@@ -22,7 +22,7 @@ export default function AddProductForm() {
     categoryName : 'tornillos',
   })
 
-  const {state, dispatch} = useInventory()
+  const {dispatch} = useInventory()
 
 
 
@@ -32,7 +32,7 @@ export default function AddProductForm() {
 
     dispatch({type : 'createProduct', payload : {product : product}})
 
-    navigate('/')
+    navigate('/1')
 
   }
   

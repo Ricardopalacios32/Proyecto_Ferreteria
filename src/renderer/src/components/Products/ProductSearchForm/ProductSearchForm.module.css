@@ -1,0 +1,31 @@
+
+.searchformcont{
+    margin-top: 10%;
+    padding: 0;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin-left: 10%;
+    gap: 30px;
+}
+
+.searchformcont input[type = "text"]{
+    padding: .5rem;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border: none;
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.searchformcont input[type = "submit"]{
+    padding: .5rem;
+    background-color: goldenrod;
+    color: white;
+    border: none;
+    font-size: .9rem;
+    margin-bottom: 8px;
+    font-weight: 400;
+    border-radius: 0;
+}
