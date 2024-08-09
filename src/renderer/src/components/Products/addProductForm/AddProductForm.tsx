@@ -5,10 +5,13 @@ import { useInventory } from "@renderer/hooks/useInventory";
 import style from './AddProductForm.module.css'
 
 import { product } from "@renderer/types";
+import { useNavigate } from "react-router-dom";
 
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default function AddProductForm() {
+
+  const navigate = useNavigate()
 
   const [product, setProduct] = useState<product>({
     productName : '',
@@ -29,7 +32,7 @@ export default function AddProductForm() {
 
     dispatch({type : 'createProduct', payload : {product : product}})
 
-    console.log(state)
+    navigate('/')
 
   }
   

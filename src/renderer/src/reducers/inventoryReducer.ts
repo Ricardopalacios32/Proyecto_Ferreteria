@@ -49,22 +49,25 @@ export const inventoryReducer = (
             products : [...state.products, product]
         }
     }
-    if(actions.type === 'editProduct'){
-
+    if (actions.type === 'editProduct') {
         const currentDate = new Date();
-
+      
         const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}/${String(currentDate.getMonth() + 1).padStart(2, '0')}/${String(currentDate.getFullYear()).slice(-2)}`;
-
+      
         return {
-            ...state,
-            products : [state.products.map(product => product.id !== actions.payload.id ? product : {
-                ...actions.payload.product, 
-                createdAt : product.createdAt, 
-                editedAt : formattedDate, 
-                categoryName : 'tornillos'})
-            ]
-        }
-    }
+          ...state,
+          products: state.products.map(product =>
+            product.id !== actions.payload.id
+              ? product
+              : {
+                  ...product,
+                  ...actions.payload.product, 
+                  editedAt: formattedDate, 
+                  categoryName: 'tornillos'
+                }
+          )
+        };
+      }
 
     return state
 }

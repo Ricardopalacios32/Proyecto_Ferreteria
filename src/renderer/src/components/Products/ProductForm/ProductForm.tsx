@@ -34,6 +34,7 @@ export default function ProductForm({product, handleChange} : ProductFormProps) 
             className=""
             id="productBuyPrice"
             onChange={handleChange}
+            defaultValue={product?.productBuyPrice}
           />
         </div>
         <div>
@@ -43,6 +44,7 @@ export default function ProductForm({product, handleChange} : ProductFormProps) 
             className=""
             id="productSellPrice"
             onChange={handleChange}
+            defaultValue={product?.productSellPrice}
           />
         </div>
         <div>
@@ -51,7 +53,8 @@ export default function ProductForm({product, handleChange} : ProductFormProps) 
             type="number" 
             className=""
             id="quantity"
-            
+            onChange={handleChange}
+            defaultValue={product?.quantity}
           />
         </div>
         <div>
@@ -60,6 +63,7 @@ export default function ProductForm({product, handleChange} : ProductFormProps) 
             name="" 
             id="categoryId"
             onChange={handleChange}
+            defaultValue={product?.categoryId}
           >
             <option value="">--Seleccione una categoria--</option>
             <option value="1">Tornillos</option>
