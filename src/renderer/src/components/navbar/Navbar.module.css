@@ -19,14 +19,14 @@
     list-style: none;
 
 }
-.navbar a{
+.navbar a, .admin{
     text-decoration: none;
     color: white;
     font-size: large;
     transition: color 0.5s ease;
 }
 
-.navbar a:hover{
+.navbar a:hover, .admin:hover{
     
     color: gold;
     
@@ -36,4 +36,5 @@
 .admin {
     
     margin-right: 40px;
+    cursor: pointer;
 }

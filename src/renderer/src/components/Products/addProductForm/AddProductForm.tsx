@@ -7,12 +7,21 @@ import style from './AddProductForm.module.css'
 import { product } from "@renderer/types";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import GoBackButton from "@renderer/components/ui/GoBackButton/GoBackButton";
 
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default function AddProductForm() {
 
   const navigate = useNavigate()
+
+  const {state, dispatch} = useInventory()
+
+  if(state.auth === false){
+    
+    navigate('/1')
+    return
+  }
 
   const [product, setProduct] = useState<product>({
     id: '',
@@ -24,10 +33,6 @@ export default function AddProductForm() {
     categoryName : 'tornillos',
   })
 
-  const {state, dispatch} = useInventory()
-
-
-
   const handleSubmit = ( e : React.FormEvent<HTMLFormElement>) => {
 
     e.preventDefault()
@@ -36,16 +41,12 @@ export default function AddProductForm() {
       toast.error("Todos Los Campos Son Requeridos")
       return
     }
-
-  
-
     if(state.products.find((item) => item.id === product.id)){
       toast.error("El ID ya existe")
 
       return
     }
-    
-    
+  
     dispatch({type : 'createProduct', payload : {product : product}})
 
     toast.success("Creado Correctamente")
@@ -67,6 +68,7 @@ export default function AddProductForm() {
 
   return (
     <>
+      <GoBackButton/>
       <form className={style.productform} action="" onSubmit={handleSubmit}>
         <ProductForm
           handleChange = {handleChange}

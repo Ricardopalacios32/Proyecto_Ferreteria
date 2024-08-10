@@ -23,6 +23,7 @@
   "dependencies": {
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^3.0.0",
+    "dotenv": "^16.4.5",
     "react-router-dom": "^6.26.0",
     "react-toastify": "^10.0.5",
     "toastify": "^2.0.1",

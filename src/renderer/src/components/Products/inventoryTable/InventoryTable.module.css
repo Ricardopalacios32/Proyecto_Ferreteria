@@ -2,7 +2,7 @@
     padding-left: 26px;
     padding-right: 26px;
     margin-top: 2%;
-    
+    width: 80%;
   }
   
   .flowRoot {
@@ -30,7 +30,7 @@
   
   th, td {
     padding: 12px;
-    text-align: left;
+    text-align: center;
     font-size: 14px;
   }
   

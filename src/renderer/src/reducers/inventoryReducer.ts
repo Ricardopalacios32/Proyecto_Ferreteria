@@ -14,7 +14,8 @@ export const initialstate : inventorystate = {
 }
 
 export type inventoryActions = 
-{type : 'authenticate', payload:{'password' : string}} |
+{type : 'authenticate'} |
+{type : 'endSession'} |
 {type : 'createProduct', payload:{'product' : product}} |
 {type : 'editProduct', payload:{'product' : product, 'id' : string}} |
 {type : 'increaseQuantity', payload:{'id' : string}} |
@@ -29,10 +30,19 @@ export const inventoryReducer = (
 ) => {
 
     if(actions.type === 'authenticate'){
+
         return{
-            ...state
+            ...state,
+            auth : true
         }
     }
+    if(actions.type === 'endSession'){
+
+      return{
+          ...state,
+          auth : false
+      }
+  }
     if(actions.type === 'createProduct'){
 
         const currentDate = new Date();

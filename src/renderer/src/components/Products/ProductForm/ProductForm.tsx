@@ -40,7 +40,7 @@ export default function ProductForm({product, handleChange} : ProductFormProps) 
   return (
     <>
         {!product ? (
-            <div className={styles.div}>
+          <div className={styles.div}>
             <label htmlFor="id">ID</label>
             <input 
               type={`${!product ? 'text' : 'hidden'}`} 

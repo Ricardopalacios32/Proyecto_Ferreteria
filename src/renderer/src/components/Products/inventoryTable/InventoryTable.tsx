@@ -1,19 +1,17 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { Link } from 'react-router-dom'
 import styles from './InventoryTable.module.css'
-
 import { productWithDates } from '@renderer/types'
 import { useInventory } from '@renderer/hooks/useInventory'
+
 
 type InventoryTableProps = {
   products : productWithDates[]
 }
 
-
-
 export default function InventoryTable({products} : InventoryTableProps) {
 
-  const {dispatch} = useInventory()
+  const {state, dispatch} = useInventory()
 
   const increaseQuantity = (id : productWithDates["id"]) =>{
 
@@ -41,7 +39,9 @@ export default function InventoryTable({products} : InventoryTableProps) {
                   <th>Categoría</th>
                   <th>Creado el</th>
                   <th>Editado el</th>
-                  <th className={styles.actions}>Acciones</th>
+                  {state.auth && (
+                    <th className={styles.actions}>Acciones</th>
+                  )}
                 </tr>
               </thead>
               <tbody>
@@ -59,11 +59,14 @@ export default function InventoryTable({products} : InventoryTableProps) {
                     <td>{product.categoryName}</td>
                     <td>{product.createdAt}</td>
                     <td>{product.editedAt}</td>
-                    <td className={styles.actions}>
-                      <Link to={`/edit/${product.id}`} className={styles.link}>
-                        Editar
-                      </Link>
-                    </td>
+                    {state.auth && (
+                      <td className={styles.actions}>
+                        <Link to={`/edit/${product.id}`} className={styles.link}>
+                          Editar
+                        </Link>
+                      </td>
+                    )}
+                    
                   </tr>
                 ))}
               </tbody>

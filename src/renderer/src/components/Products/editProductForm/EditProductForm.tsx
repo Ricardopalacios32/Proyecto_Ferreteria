@@ -7,6 +7,7 @@ import style from './EditProductForm.module.css'
 import { product } from "@renderer/types";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import GoBackButton from "@renderer/components/ui/GoBackButton/GoBackButton";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default function EditProductForm() {
@@ -79,6 +80,7 @@ export default function EditProductForm() {
 
   return (
     <>
+      <GoBackButton/>
       <form className={style.productform} action="" onSubmit={handleSubmit}>
         <ProductForm
           product={editProduct}

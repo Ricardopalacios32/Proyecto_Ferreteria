@@ -4,6 +4,7 @@ import CreateProduct from "./pages/CreateProduct/CreateProduct";
 import ProductTable from "./pages/ProductTable/ProductTable";
 import EditProduct from "./pages/EditProduct/EditProduct";
 import ProductSearchTable from "./pages/ProductSearchTable/ProductSearchTable";
+import AdminAuth from "./pages/AdminAuth/AdminAuth";
 
 
 export default function AppRouter() {
@@ -14,6 +15,7 @@ export default function AppRouter() {
         <Route index path="/search/:name?" element={<ProductSearchTable />} />
         <Route path="/create" element={<CreateProduct />}/>
         <Route path="/edit/:id" element={<EditProduct/>}/>
+        <Route path="/auth" element={<AdminAuth/>}/>
       </Routes>
     </HashRouter>
   );
