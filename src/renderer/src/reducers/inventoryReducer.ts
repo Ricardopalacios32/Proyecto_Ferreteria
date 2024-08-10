@@ -16,7 +16,9 @@ export const initialstate : inventorystate = {
 export type inventoryActions = 
 {type : 'authenticate', payload:{'password' : string}} |
 {type : 'createProduct', payload:{'product' : product}} |
-{type : 'editProduct', payload:{'product' : product, 'id' : string}}
+{type : 'editProduct', payload:{'product' : product, 'id' : string}} |
+{type : 'increaseQuantity', payload:{'id' : string}} |
+{type : 'decreaseQuantity', payload:{'id' : string}}
 
 export const inventoryReducer = (
 
@@ -64,6 +66,44 @@ export const inventoryReducer = (
                   ...actions.payload.product, 
                   editedAt: formattedDate, 
                   categoryName: 'tornillos'
+                }
+          )
+        };
+      }
+      if (actions.type === 'increaseQuantity') {
+        const currentDate = new Date();
+      
+        const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}/${String(currentDate.getMonth() + 1).padStart(2, '0')}/${String(currentDate.getFullYear()).slice(-2)}`;
+      
+        return {
+          ...state,
+          products: state.products.map(product =>
+            product.id !== actions.payload.id
+              ? product
+              : {
+                  ...product,
+                  quantity: product.quantity + 1,
+                  editedAt: formattedDate, 
+                  
+                }
+          )
+        };
+      }
+      if (actions.type === 'decreaseQuantity') {
+        const currentDate = new Date();
+      
+        const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}/${String(currentDate.getMonth() + 1).padStart(2, '0')}/${String(currentDate.getFullYear()).slice(-2)}`;
+      
+        return {
+          ...state,
+          products: state.products.map(product =>
+            product.id !== actions.payload.id
+              ? product
+              : {
+                  ...product,
+                  quantity: product.quantity - 1,
+                  editedAt: formattedDate, 
+                  
                 }
           )
         };
