@@ -24,6 +24,8 @@
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^3.0.0",
     "react-router-dom": "^6.26.0",
+    "react-toastify": "^10.0.5",
+    "toastify": "^2.0.1",
     "uuid": "^10.0.0"
   },
   "devDependencies": {

@@ -32,7 +32,6 @@ export default function ProductTable() {
   const skip = (pageNumber - 1) * pagesize
   const products = state.products.slice(skip, skip + pagesize)
 
-  console.log(pageNumber, totalproducts, totalpages);
   
   return (
     <div className={styles.producttablecont}>

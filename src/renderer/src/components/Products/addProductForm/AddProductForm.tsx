@@ -6,6 +6,7 @@ import style from './AddProductForm.module.css'
 
 import { product } from "@renderer/types";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -14,6 +15,7 @@ export default function AddProductForm() {
   const navigate = useNavigate()
 
   const [product, setProduct] = useState<product>({
+    id: '',
     productName : '',
     productBuyPrice : 0,
     productSellPrice : 0,
@@ -22,7 +24,7 @@ export default function AddProductForm() {
     categoryName : 'tornillos',
   })
 
-  const {dispatch} = useInventory()
+  const {state, dispatch} = useInventory()
 
 
 
@@ -30,9 +32,27 @@ export default function AddProductForm() {
 
     e.preventDefault()
 
+    if (Object.values(product).some(value => value === '')) {
+      toast.error("Todos Los Campos Son Requeridos")
+      return
+    }
+
+  
+
+    if(state.products.find((item) => item.id === product.id)){
+      toast.error("El ID ya existe")
+
+      return
+    }
+    
+    
     dispatch({type : 'createProduct', payload : {product : product}})
 
-    navigate('/1')
+    toast.success("Creado Correctamente")
+
+    setTimeout(() => {
+      navigate('/1');
+    }, 3000);
 
   }
   

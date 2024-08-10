@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductForm from "../ProductForm/ProductForm";
 import { useInventory } from "@renderer/hooks/useInventory";
 import style from './EditProductForm.module.css'
 
 import { product } from "@renderer/types";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "react-toastify";
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default function EditProductForm() {
@@ -18,28 +19,52 @@ export default function EditProductForm() {
 
   const editProduct = state.products.find(product => product.id === id);
 
-  if(!id || !editProduct){
-    navigate('/')
-    return
-  }
+  useEffect(()=>{
+
+    if(!id || !editProduct){
+      navigate('/')
+      
+    }
+
+  })
 
   const [product, setProduct] = useState<product>({
-    productName : editProduct.productName,
-    productBuyPrice : editProduct.productBuyPrice,
-    productSellPrice : editProduct.productSellPrice,
-    quantity: editProduct.quantity,
-    categoryId: editProduct.categoryId,
-    categoryName : editProduct.categoryName,
+    id: id!,
+    productName : editProduct!.productName,
+    productBuyPrice : editProduct!.productBuyPrice,
+    productSellPrice : editProduct!.productSellPrice,
+    quantity: editProduct!.quantity,
+    categoryId: editProduct!.categoryId,
+    categoryName : editProduct!.categoryName,
   })
 
   const handleSubmit = ( e : React.FormEvent<HTMLFormElement>) => {
 
     e.preventDefault()
+
+    if (Object.values(product).some(value => value === '')) {
+      toast.error("Todos Los Campos Son Requeridos")
+      return
+    }
+
+  
+
+    if(!state.products.find((item) => item.id === product.id)){
+      toast.error("El ID ya existe")
+
+      return
+    }
     
 
-    dispatch({type : 'editProduct', payload : {product : product, id : id}})
+    dispatch({type : 'editProduct', payload : {product : product, id : id!}})
 
-    navigate('/')
+    toast.success("Editado Correctamente")
+
+    setTimeout(() => {
+      navigate('/1');
+    }, 3000);
+
+    
 
   }
   

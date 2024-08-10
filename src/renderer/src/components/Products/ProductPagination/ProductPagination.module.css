@@ -20,5 +20,7 @@
   }
   
   .active {
-    background-color: goldenrod; /* Amber 400 */
+    background-color: goldenrod; 
+    color: white;
+    border: none;/* Amber 400 */
   }
