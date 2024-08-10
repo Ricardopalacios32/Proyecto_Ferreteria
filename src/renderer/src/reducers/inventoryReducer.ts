@@ -1,6 +1,6 @@
 
 import type { productWithDates, product } from "@renderer/types";
-import {v4 as uuidv4} from 'uuid'
+
 
 
 export type inventorystate = {
@@ -41,9 +41,8 @@ export const inventoryReducer = (
 
         const product = {
             ...actions.payload.product,
-            id : uuidv4(),
             //cambiar
-            categoryName: 'tornillos',
+            categoryName: 'Pintura',
             createdAt : formattedDate
         }
         return{
@@ -77,12 +76,9 @@ export const inventoryReducer = (
       
         return {
           ...state,
-          products: state.products.map(product =>
-            product.id !== actions.payload.id
-              ? product
-              : {
+          products: state.products.map(product => product.id !== actions.payload.id ? product : {
                   ...product,
-                  quantity: product.quantity + 1,
+                  quantity: +product.quantity + 1,
                   editedAt: formattedDate, 
                   
                 }
@@ -101,7 +97,7 @@ export const inventoryReducer = (
               ? product
               : {
                   ...product,
-                  quantity: product.quantity - 1,
+                  quantity: +product.quantity - 1,
                   editedAt: formattedDate, 
                   
                 }

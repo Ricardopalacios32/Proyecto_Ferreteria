@@ -5,6 +5,7 @@ import ProductTable from "./pages/ProductTable/ProductTable";
 import EditProduct from "./pages/EditProduct/EditProduct";
 import ProductSearchTable from "./pages/ProductSearchTable/ProductSearchTable";
 
+
 export default function AppRouter() {
   return (
     <HashRouter>
