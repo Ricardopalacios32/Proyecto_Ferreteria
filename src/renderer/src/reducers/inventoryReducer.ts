@@ -1,15 +1,17 @@
 
-import type { productWithDates, product } from "@renderer/types";
+import type { productWithDates, product, category } from "@renderer/types";
 
 
 
 export type inventorystate = {
     products : productWithDates[]
+    categories: category[]
     auth : boolean
 }
 
 export const initialstate : inventorystate = {
     products : [],
+    categories: [],
     auth : false
 }
 
@@ -19,7 +21,9 @@ export type inventoryActions =
 {type : 'createProduct', payload:{'product' : product}} |
 {type : 'editProduct', payload:{'product' : product, 'id' : string}} |
 {type : 'increaseQuantity', payload:{'id' : string}} |
-{type : 'decreaseQuantity', payload:{'id' : string}}
+{type : 'decreaseQuantity', payload:{'id' : string}} |
+{type : 'createCategory', payload:{'category' : category}} |
+{type : 'editCategory', payload:{'category' : category}}
 
 export const inventoryReducer = (
 
@@ -49,10 +53,11 @@ export const inventoryReducer = (
 
         const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}/${String(currentDate.getMonth() + 1).padStart(2, '0')}/${String(currentDate.getFullYear()).slice(-2)}`;
 
+        const categoryname = state.categories.find( item => item.categoryId === actions.payload.product.categoryId)
+
         const product = {
             ...actions.payload.product,
-            //cambiar
-            categoryName: 'Pintura',
+            categoryName: categoryname?.categoryName,
             createdAt : formattedDate
         }
         return{
@@ -64,6 +69,8 @@ export const inventoryReducer = (
         const currentDate = new Date();
       
         const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}/${String(currentDate.getMonth() + 1).padStart(2, '0')}/${String(currentDate.getFullYear()).slice(-2)}`;
+
+        const categoryname = state.categories.find( item => item.categoryId === actions.payload.product.categoryId)
       
         return {
           ...state,
@@ -74,7 +81,7 @@ export const inventoryReducer = (
                   ...product,
                   ...actions.payload.product, 
                   editedAt: formattedDate, 
-                  categoryName: 'tornillos'
+                  categoryName: categoryname?.categoryName
                 }
           )
         };
@@ -113,6 +120,20 @@ export const inventoryReducer = (
                 }
           )
         };
+      }
+      if(actions.type === 'createCategory'){
+
+        return {
+          ...state,
+          categories : [...state.categories, actions.payload.category]
+        }
+      }
+      if(actions.type === 'editCategory'){
+
+        return {
+          ...state,
+          categories: state.categories.map( category => category.categoryId !== actions.payload.category.categoryId ? category : {...actions.payload.category})
+        }
       }
 
     return state

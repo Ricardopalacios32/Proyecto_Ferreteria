@@ -16,6 +16,8 @@ export default function Navbar() {
         <ul>
           <li><Link to="/1">Inventario</Link></li>
           <li><Link to="/create">Crear Producto</Link></li>
+          <li><Link to="/category">Categorias</Link></li>
+          <li><Link to="/category/create">Crear Categoria</Link></li>
         </ul>
         <div className={style.admin} onClick={()=>dispatch({type : 'endSession'})} >Cerrar Sesion</div>
       </nav>

@@ -22,3 +22,8 @@ export type productWithDates = {
     createdAt: string,
     editedAt?: string
 }
+
+export type category = {
+    categoryId : string,
+    categoryName : string
+}

@@ -1,0 +1,58 @@
+.container {
+    padding-left: 26px;
+    padding-right: 26px;
+    margin-top: 10%;
+    width: auto;
+  }
+  
+  .flowRoot {
+    margin-top: 8px;
+  }
+  
+  .tableWrapper {
+    overflow-x: auto;
+    background-color: white;
+    
+  }
+  
+  .tableContainer {
+    display: inline-block;
+    min-width: 100%;
+    padding: 16px;
+    
+  }
+  
+  table {
+    min-width: auto;
+    border-collapse: collapse;
+    margin-bottom: 16px;
+    
+  }
+  
+  th, td {
+    padding: 20px;
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  th {
+    font-weight: bold;
+    color: #1a202c; /* text-gray-900 */
+  }
+  
+  td {
+    color: #4a5568; /* text-gray-500 */
+  }
+  
+  .actions {
+    text-align: right;
+  }
+  
+  .link {
+    color: #4c51bf; /* text-indigo-600 */
+    text-decoration: none;
+  }
+  
+  .link:hover {
+    color: #434190; /* text-indigo-800 */
+  }

@@ -2,6 +2,7 @@
 
 import { product } from "@renderer/types"
 import styles from './ProductForm.module.css'
+import { useInventory } from "@renderer/hooks/useInventory"
 
 
 type ProductFormProps = {
@@ -9,33 +10,9 @@ type ProductFormProps = {
     handleChange : (e : React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>)=>void
 }
 
-const categories = [
-  { id: 1, name: "Herramientas Manuales" },
-  { id: 2, name: "Herramientas Eléctricas" },
-  { id: 3, name: "Tornillería" },
-  { id: 4, name: "Fijaciones" },
-  { id: 5, name: "Pinturas y Acabados" },
-  { id: 6, name: "Materiales de Construcción" },
-  { id: 7, name: "Fontanería" },
-  { id: 8, name: "Electricidad" },
-  { id: 9, name: "Iluminación" },
-  { id: 10, name: "Adhesivos y Selladores" },
-  { id: 11, name: "Seguridad Industrial" },
-  { id: 12, name: "Cerrajería" },
-  { id: 13, name: "Ferretería Decorativa" },
-  { id: 14, name: "Jardinería" },
-  { id: 15, name: "Cerraduras y Candados" },
-  { id: 16, name: "Automatización" },
-  { id: 17, name: "Calefacción y Climatización" },
-  { id: 18, name: "Accesorios de Baño" },
-  { id: 19, name: "Materiales de Soldadura" },
-  { id: 20, name: "Accesorios para Muebles" }
-];
-
-
 export default function ProductForm({product, handleChange} : ProductFormProps) {
 
-  
+  const {state} = useInventory()
 
   return (
     <>
@@ -101,9 +78,9 @@ export default function ProductForm({product, handleChange} : ProductFormProps) 
             defaultValue={product?.categoryId}
           >
             <option value="">--Seleccione una categoria--</option>
-            {categories.map((category) => (
-            <option key={category.id} value={JSON.stringify(category)}>
-              {category.name}
+            {state.categories.map((category) => (
+            <option key={category.categoryId} value={category.categoryId}>
+              {category.categoryName}
             </option>
         ))}
           </select>
