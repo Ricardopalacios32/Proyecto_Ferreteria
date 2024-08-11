@@ -15,7 +15,7 @@ input[type = "text"], input[type = "number"], select{
 }
 
 input[type = "submit"] {
-    background-color: rgb(205, 174, 0);
+    background-color: goldenrod;
     border: none;
     color: white;
     font-weight: bolder;

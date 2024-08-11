@@ -32,6 +32,13 @@ export default function ProductTable() {
   const skip = (pageNumber - 1) * pagesize
   const products = state.products.slice(skip, skip + pagesize)
 
+  if(state.products.length === 0) return (
+    <div className={styles.producttablecont}>
+      <Navbar />
+      <input type="file" name="" id="" />
+    </div>
+    
+  )
   
   return (
     <div className={styles.producttablecont}>

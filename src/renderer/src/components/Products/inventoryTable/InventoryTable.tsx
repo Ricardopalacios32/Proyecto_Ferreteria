@@ -23,6 +23,8 @@ export default function InventoryTable({products} : InventoryTableProps) {
     dispatch({type : 'decreaseQuantity', payload : {id : id} })
   }
 
+ 
+
   return (
     <div className={styles.container}>
       <div className={styles.flowRoot}>

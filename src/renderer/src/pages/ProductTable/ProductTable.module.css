@@ -5,3 +5,7 @@
     align-items: center;
     flex-direction: column;
 }
+
+.producttablecont input[type = "file"] {
+    margin-top: 20%;
+}

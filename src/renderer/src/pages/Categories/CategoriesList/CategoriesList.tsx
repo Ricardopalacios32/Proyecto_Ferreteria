@@ -9,8 +9,18 @@ export default function CategoriesList() {
   const { state } = useInventory();
   
 
+
   
   const categories = state.categories
+
+  if(state.categories.length === 0) return (
+    <div className={styles.categorytablecont}>
+      <Navbar />
+      <input type="file" name="" id="" />
+    </div>
+    
+  )
+
   return (
     <div className={styles.categorytablecont}>
       <Navbar />  
