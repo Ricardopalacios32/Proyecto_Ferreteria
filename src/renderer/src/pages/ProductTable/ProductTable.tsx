@@ -2,7 +2,7 @@
 import Navbar from "@renderer/components/navbar/Navbar";
 import InventoryTable from "@renderer/components/Products/inventoryTable/InventoryTable";
 import styles from './ProductTable.module.css';
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useInventory } from "@renderer/hooks/useInventory";
 import ProductPagination from "@renderer/components/Products/ProductPagination/ProductPagination";
 import { useEffect } from "react";
@@ -42,7 +42,14 @@ export default function ProductTable() {
   return (
     <div className={styles.producttablecont}>
       <Navbar />
-      <ProductSearchForm/>
+      <div className={styles.tablecontrolscont}>
+        {state.auth && (
+          <Link to="/create" className={styles.createbutton}>Crear Producto</Link>
+        )}
+        
+        <ProductSearchForm/>
+      </div>
+      
       <InventoryTable 
         products={products}
       />

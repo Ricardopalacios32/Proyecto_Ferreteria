@@ -3,6 +3,7 @@ import CategoryTable from '@renderer/components/Categories/CategoryTable/Categor
 import Navbar from '@renderer/components/navbar/Navbar'
 import { useInventory } from '@renderer/hooks/useInventory';
 import styles from './CategoriesList.module.css'
+import { Link } from 'react-router-dom';
 
 export default function CategoriesList() {
 
@@ -24,6 +25,12 @@ export default function CategoriesList() {
   return (
     <div className={styles.categorytablecont}>
       <Navbar />  
+      {state.auth === true && (
+        <div className={styles.tablecontrolscont}>
+        <Link to="/category/create" className={styles.createbutton}>Crear Categoria</Link>
+      </div>
+      )}
+      
       <CategoryTable 
         categories={categories}
       />

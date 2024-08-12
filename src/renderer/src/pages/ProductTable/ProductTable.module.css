@@ -6,6 +6,29 @@
     flex-direction: column;
 }
 
+.producttablecont .tablecontrolscont {
+    width: 80%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    margin-top: 8%;
+}
+
+
+.producttablecont .createbutton{
+    padding: .5rem;
+    color: white;
+    background-color: goldenrod;
+    font-size: 1.rem;
+    text-align: center;
+    width: auto;
+    
+    font-weight: 600;
+    
+    text-decoration: none;
+}
+
 .producttablecont input[type = "file"] {
     margin-top: 20%;
 }

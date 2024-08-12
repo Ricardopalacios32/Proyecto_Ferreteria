@@ -79,8 +79,15 @@ app.whenReady().then(() => {
 })
 
 ipcMain.on('save-file', (event, data) => {
+
+  const currentDate = new Date();
+      
+  const formattedDate = `${String(currentDate.getDate()).padStart(2, '0')}-${String(currentDate.getMonth() + 1).padStart(2, '0')}-${String(currentDate.getFullYear())}`;
+
+  
+
   const desktopPath = path.join(os.homedir(), 'Desktop');
-  const filePath = path.join(desktopPath, 'Inventario.json');
+  const filePath = path.join(desktopPath, `${formattedDate}-Inventario.json`);
 
   const [categoriesJSON, productsJSON] = data.split(']');
   console.log(categoriesJSON)

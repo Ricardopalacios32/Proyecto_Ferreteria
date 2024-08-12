@@ -1,13 +1,15 @@
 /* eslint-disable @typescript-eslint/explicit-function-return-type */
 import { toast, ToastContainer } from 'react-toastify'
 import style from './Navbar.module.css'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 import { useInventory } from '@renderer/hooks/useInventory';
 
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default function Navbar() {
+
+  const navigate = useNavigate()
   const {state, dispatch} = useInventory()
 
   const handleSave = () => {
@@ -22,6 +24,11 @@ export default function Navbar() {
 
     toast.success('Archivo Creado Correctamente en el Escritorio')
   }
+
+  const cerrarsesion = ()=>{
+    dispatch({type : 'endSession'})
+    navigate("/1")
+  }
   
 
   return (
@@ -31,13 +38,13 @@ export default function Navbar() {
         <nav className={style.navbar}>
         <ul>
           <li><Link to="/1">Inventario</Link></li>
-          <li><Link to="/create">Crear Producto</Link></li>
+
           <li><Link to="/category">Categorias</Link></li>
-          <li><Link to="/category/create">Crear Categoria</Link></li>
+         
           
           <li><div className={style.admin} onClick={handleSave}>Guardar Inventario</div></li>
         </ul>
-        <div className={style.admin} onClick={()=>dispatch({type : 'endSession'})} >Cerrar Sesion</div>
+        <div className={style.admin} onClick={cerrarsesion} >Cerrar Sesion</div>
       </nav>
       ): (
         <nav className={style.navbar}>
