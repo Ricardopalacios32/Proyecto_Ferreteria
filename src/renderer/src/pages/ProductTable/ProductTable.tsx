@@ -7,6 +7,7 @@ import { useInventory } from "@renderer/hooks/useInventory";
 import ProductPagination from "@renderer/components/Products/ProductPagination/ProductPagination";
 import { useEffect } from "react";
 import ProductSearchForm from "@renderer/components/Products/ProductSearchForm/ProductSearchForm";
+import DataForm from "@renderer/components/ui/DataForm/DataForm";
 
 export default function ProductTable() {
   
@@ -32,11 +33,9 @@ export default function ProductTable() {
   const skip = (pageNumber - 1) * pagesize
   const products = state.products.slice(skip, skip + pagesize)
 
+
   if(state.products.length === 0) return (
-    <div className={styles.producttablecont}>
-      <Navbar />
-      <input type="file" name="" id="" />
-    </div>
+    <DataForm/>
     
   )
   

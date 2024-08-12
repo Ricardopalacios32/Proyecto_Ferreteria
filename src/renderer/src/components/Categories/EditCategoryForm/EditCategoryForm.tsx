@@ -69,8 +69,6 @@ export default function EditCategoryForm() {
       categoryName : e.target.value 
     })
 
-    console.log(category)
-
 }
 
   return (

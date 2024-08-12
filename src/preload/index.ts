@@ -1,4 +1,4 @@
-import { contextBridge } from 'electron'
+import { contextBridge, ipcRenderer } from 'electron'
 import { electronAPI } from '@electron-toolkit/preload'
 
 // Custom APIs for renderer
@@ -15,6 +15,10 @@ if (process.contextIsolated) {
     contextBridge.exposeInMainWorld('env', {
       VITE_PASSWORD_ADMIN: process.env.VITE_PASSWORD_ADMIN
     });
+    contextBridge.exposeInMainWorld('electronsave', {
+      saveFile: (data) => ipcRenderer.send('save-file', data)
+    });
+    
   } catch (error) {
     console.error(error)
   }

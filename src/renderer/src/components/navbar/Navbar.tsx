@@ -1,12 +1,28 @@
-import { ToastContainer } from 'react-toastify'
+/* eslint-disable @typescript-eslint/explicit-function-return-type */
+import { toast, ToastContainer } from 'react-toastify'
 import style from './Navbar.module.css'
 import { Link } from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 import { useInventory } from '@renderer/hooks/useInventory';
 
+
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export default function Navbar() {
   const {state, dispatch} = useInventory()
+
+  const handleSave = () => {
+    
+    const jsonInventory = JSON.stringify(state.products)
+    const jsonCategories = JSON.stringify(state.categories)
+
+    const Jsondata = jsonCategories + jsonInventory
+
+    // @ts-ignore (define in dts)
+    window.electronsave.saveFile(Jsondata)
+
+    toast.success('Archivo Creado Correctamente en el Escritorio')
+  }
+  
 
   return (
     <>
@@ -18,6 +34,8 @@ export default function Navbar() {
           <li><Link to="/create">Crear Producto</Link></li>
           <li><Link to="/category">Categorias</Link></li>
           <li><Link to="/category/create">Crear Categoria</Link></li>
+          
+          <li><div className={style.admin} onClick={handleSave}>Guardar Inventario</div></li>
         </ul>
         <div className={style.admin} onClick={()=>dispatch({type : 'endSession'})} >Cerrar Sesion</div>
       </nav>

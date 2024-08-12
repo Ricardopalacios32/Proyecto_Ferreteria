@@ -15,6 +15,7 @@ export const InventoryContext = createContext<inventoryContextProps>(null!)
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 export const InventoryProvider = ({children} : inventoryProviderProps) => {
 
+    // @ts-ignore (type bug)
     const [state, dispatch] = useReducer(inventoryReducer, initialstate)
 
     return (

@@ -23,7 +23,9 @@ export type inventoryActions =
 {type : 'increaseQuantity', payload:{'id' : string}} |
 {type : 'decreaseQuantity', payload:{'id' : string}} |
 {type : 'createCategory', payload:{'category' : category}} |
-{type : 'editCategory', payload:{'category' : category}}
+{type : 'editCategory', payload:{'category' : category}} |
+{type : 'seedData', payload:{'categories' : category[], products : product[]}}
+
 
 export const inventoryReducer = (
 
@@ -132,7 +134,17 @@ export const inventoryReducer = (
 
         return {
           ...state,
-          categories: state.categories.map( category => category.categoryId !== actions.payload.category.categoryId ? category : {...actions.payload.category})
+          products: state.products.map(product => product.categoryId !== actions.payload.category.categoryId ? product : {...product, categoryName : actions.payload.category.categoryName}),
+          categories: state.categories.map( category => category.categoryId !== actions.payload.category.categoryId ? category : {...category, ...actions.payload.category})
+        }
+      }
+      if(actions.type === 'seedData'){
+
+        
+        return {
+          ...state,
+          categories : actions.payload.categories,
+          products : actions.payload.products
         }
       }
 

@@ -3,6 +3,12 @@ import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.png?asset'
 
+import path from 'path'
+import os from 'os'
+import fs from 'fs'
+
+
+
 
 
 function createWindow(): void {
@@ -15,7 +21,8 @@ function createWindow(): void {
     ...(process.platform === 'linux' ? { icon } : {}),
     webPreferences: {
       preload: join(__dirname, '../preload/index.js'),
-      sandbox: false
+      sandbox: false,
+      webSecurity: false
     }
   })
 
@@ -57,6 +64,8 @@ app.whenReady().then(() => {
     optimizer.watchWindowShortcuts(window)
   })
 
+
+  
   // IPC test
   ipcMain.on('ping', () => console.log('pong'))
 
@@ -68,6 +77,40 @@ app.whenReady().then(() => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
   })
 })
+
+ipcMain.on('save-file', (event, data) => {
+  const desktopPath = path.join(os.homedir(), 'Desktop');
+  const filePath = path.join(desktopPath, 'Inventario.json');
+
+  const [categoriesJSON, productsJSON] = data.split(']');
+  console.log(categoriesJSON)
+  
+  try {
+    const categories = JSON.parse(categoriesJSON+']');
+    const products = JSON.parse(productsJSON+']');
+
+    
+
+    if(!categories || !products){
+      throw new categories('Datos no Validos')
+    }
+
+    fs.writeFile(filePath, data, (err) => {
+      if (err) {
+        console.error('Error al guardar el archivo:', err);
+        event.reply('save-file-response', { success: false, error: err.message });
+        return;
+      }
+      console.log('Archivo guardado en el escritorio');
+      event.reply('save-file-response', { success: true });
+    });
+  } catch (err) {
+    console.error('Error al procesar el JSON:', err);
+    event.reply('save-file-response', { success: false, error: 'Invalid JSON data' });
+  }
+});
+
+
 
 // Quit when all windows are closed, except on macOS. There, it's common
 // for applications and their menu bar to stay active until the user quits
