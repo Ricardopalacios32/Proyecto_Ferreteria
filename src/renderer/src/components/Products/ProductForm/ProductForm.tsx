@@ -43,6 +43,7 @@ export default function ProductForm({product, handleChange} : ProductFormProps) 
           <label htmlFor="productBuyPrice">Precio de Compra</label>
           <input 
             type="number" 
+            step="0.01"
             className=""
             id="productBuyPrice"
             onChange={handleChange}
@@ -53,6 +54,7 @@ export default function ProductForm({product, handleChange} : ProductFormProps) 
           <label htmlFor="productSellPrice">Precio de Venta</label>
           <input 
             type="number" 
+            step="0.01"
             className=""
             id="productSellPrice"
             onChange={handleChange}

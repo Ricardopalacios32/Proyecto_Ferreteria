@@ -53,11 +53,14 @@ export default function InventoryTable({products} : InventoryTableProps) {
                     <td>{product.productName}</td>
                     <td>{product.productBuyPrice}</td>
                     <td>{product.productSellPrice}</td>
-                    <td className={styles.quantityContainer}>
+                    {state.auth ? (
+                      <td className={styles.quantityContainer}>
                       <button onClick={()=> decreaseQuantity(product.id)} className={styles.quantityButton + ' ' + styles.decrementButton}>-</button>
                       <p className={styles.quantityInput}>{product.quantity}</p> 
                       <button onClick={()=> increaseQuantity(product.id)} className={styles.quantityButton + ' ' + styles.incrementButton}>+</button>
                     </td>
+                    ):<td>{product.quantity}</td>}
+                    
                     <td>{product.categoryName}</td>
                     <td>{product.createdAt}</td>
                     <td>{product.editedAt}</td>
