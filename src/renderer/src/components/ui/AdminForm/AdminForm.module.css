@@ -1,6 +1,6 @@
 .adminFormcont{
     padding: 1.8rem;
-    margin-top: 5%;
+    margin-top: 2%;
     background-color: white;
     box-shadow: 10px 10px 0 -5px rgba(0, 0, 0, 0.199);
     border-radius: 1rem;
@@ -10,3 +10,4 @@
     min-width: 400px;
     max-width: 400px;
 }
+

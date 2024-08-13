@@ -9,7 +9,9 @@ export default function AdminAuth() {
   return (
     <div className={styles.adminAuthcont}>
         <Navbar/>
+        
         <GoBackButton/>
+        <p>Ingrese La Contraseña de Autenticacion</p>
         <AdminForm/>
     </div>
   )

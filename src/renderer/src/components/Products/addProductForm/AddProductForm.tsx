@@ -69,6 +69,7 @@ export default function AddProductForm() {
   return (
     <>
       <GoBackButton/>
+      <p className={style.addproducttitle}>Ingrese Los datos del Producto</p>
       <form className={style.productform} action="" onSubmit={handleSubmit}>
         <ProductForm
           handleChange = {handleChange}

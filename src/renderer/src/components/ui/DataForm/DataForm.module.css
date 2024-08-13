@@ -2,9 +2,31 @@
     width: 100vw;
     display: flex;
     align-items: center;
+    display: flex;
     flex-direction: column;
 }
 
-.dataformcont input[type = "file"] {
+.dataformcont .title{
     margin-top: 20%;
+    
+}
+
+.dataformcont p{
+    font-size: large;
+    
+}
+
+.dataformcont input[type = "file"] {
+    
+    padding: 1.8rem;
+    margin: 1rem;
+    font-size: medium;
+    background-color: white;
+    box-shadow: 10px 10px 0 -5px rgba(0, 0, 0, 0.199);
+    border-radius: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    min-width: 400px;
+    max-width: 400px;
 }
