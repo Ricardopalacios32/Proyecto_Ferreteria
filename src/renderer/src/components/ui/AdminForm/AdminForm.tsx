@@ -45,6 +45,7 @@ export default function AdminForm() {
 
   return (
     <form className={styles.adminFormcont} onSubmit={handleSubmit} >
+       
         <div className={styles.div}>
             <label htmlFor="password">Contraseña</label>
             <input 

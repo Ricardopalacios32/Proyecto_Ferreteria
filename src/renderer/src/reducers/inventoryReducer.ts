@@ -11,7 +11,7 @@ export type inventorystate = {
 
 export const initialstate : inventorystate = {
     products : [],
-    categories: [],
+    categories: [{categoryId: '51515125888awerdff', categoryName : 'Productos de Jardineria'}],
     auth : false
 }
 

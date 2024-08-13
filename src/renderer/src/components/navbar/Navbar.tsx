@@ -41,8 +41,10 @@ export default function Navbar() {
 
           <li><Link to="/category">Categorias</Link></li>
          
-          
-          <li><div className={style.admin} onClick={handleSave}>Guardar Inventario</div></li>
+          {state.products.length !== 0 && (
+             <li><div className={style.admin} onClick={handleSave}>Guardar Inventario</div></li>
+          )}
+         
         </ul>
         <div className={style.admin} onClick={cerrarsesion} >Cerrar Sesion</div>
       </nav>
@@ -52,7 +54,7 @@ export default function Navbar() {
         <ul>
           <li><Link to="/1">Inventario</Link></li>
         </ul>
-        <Link className={style.admin} to="/auth">Admin</Link>
+        <Link className={style.admin} to="/auth">Modo Administrador</Link>
       </nav>
 
       )}
