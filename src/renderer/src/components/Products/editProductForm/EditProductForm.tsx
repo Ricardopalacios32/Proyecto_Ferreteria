@@ -59,13 +59,11 @@ export default function EditProductForm() {
 
     dispatch({type : 'editProduct', payload : {product : product, id : id!}})
 
-    toast.success("Editado Correctamente")
-
     setTimeout(() => {
-      navigate('/1');
-    }, 3000);
+      toast.success("Editado Correctamente")
+    }, 500);
 
-    
+    navigate('/1');
 
   }
   

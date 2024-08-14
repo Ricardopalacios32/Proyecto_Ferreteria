@@ -29,13 +29,15 @@ export default function AdminForm() {
             return
         }
         
-        toast.success("Autenticado Correctamente")
+        
     
         setTimeout(() => {
-          dispatch({type : 'authenticate'})
-          navigate('/1');
-        }, 3000);
+          
+          toast.success("Autenticado Correctamente")
+        }, 500);
     
+        dispatch({type : 'authenticate'})
+        navigate('/1');
       }
       
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) =>{

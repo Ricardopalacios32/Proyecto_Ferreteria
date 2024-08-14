@@ -44,11 +44,11 @@ export default function AddCategoryForm() {
   
     dispatch({type : 'createCategory', payload : {category : category}})
 
-    toast.success("Creado Correctamente")
-
     setTimeout(() => {
-      navigate('/category');
-    }, 3000);
+      toast.success("Creado Correctamente")
+    }, 500);
+
+    navigate('/category');
 
   }
   
