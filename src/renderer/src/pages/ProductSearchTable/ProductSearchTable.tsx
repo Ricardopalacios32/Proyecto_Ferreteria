@@ -22,8 +22,11 @@ export default function ProductSearchTable() {
     })
   
     const { state } = useInventory();
-    const products = state.products.filter(product => product.productName.includes(name!))
-  
+    const normalizeString = (string : string)=> {
+      return string.normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase();
+    }
+    
+    const products = state.products.filter(product => normalizeString(product.productName).includes(normalizeString(name || '')));
     return (
       <div className={styles.producttablecont}>
         <Navbar />
