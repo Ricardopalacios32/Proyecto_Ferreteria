@@ -49,11 +49,13 @@ export default function AddProductForm() {
   
     dispatch({type : 'createProduct', payload : {product : product}})
 
-    toast.success("Creado Correctamente")
+   
 
     setTimeout(() => {
-      navigate('/1');
-    }, 3000);
+      toast.success("Creado Correctamente")
+    }, 100);
+
+    navigate('/1');
 
   }
   

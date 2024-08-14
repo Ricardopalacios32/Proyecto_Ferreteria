@@ -52,11 +52,13 @@ export default function EditCategoryForm() {
     
     dispatch({type : 'editCategory', payload : {category : category}})
 
-    toast.success("Editado Correctamente")
+    
 
     setTimeout(() => {
-      navigate('/category');
-    }, 3000);
+      toast.success("Editado Correctamente")
+    }, 500);
+
+    navigate('/category');
 
   }
 
