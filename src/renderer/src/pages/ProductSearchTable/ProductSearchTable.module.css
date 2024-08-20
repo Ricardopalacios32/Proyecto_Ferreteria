@@ -5,3 +5,7 @@
     align-items: center;
     flex-direction: column;
 }
+
+.producttablecont .goBackbuttom{
+    margin-right: 200px;
+}
