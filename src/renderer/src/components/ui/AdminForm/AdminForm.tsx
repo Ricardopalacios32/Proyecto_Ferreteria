@@ -49,8 +49,6 @@ export default function AdminForm() {
           ...user,
           [e.target.id] : e.target.value
         })
-
-        console.log(user)
     }
 
 

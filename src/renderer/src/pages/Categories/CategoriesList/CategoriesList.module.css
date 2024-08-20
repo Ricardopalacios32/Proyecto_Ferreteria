@@ -16,7 +16,7 @@
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
-    margin-top: 9%;
+    margin-top: 12%;
 }
 
 
@@ -27,7 +27,7 @@
     font-size: 1.rem;
     text-align: center;
     width: auto;
-    
+    margin-left: -100px;
     font-weight: 600;
     
     text-decoration: none;

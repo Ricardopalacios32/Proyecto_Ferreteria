@@ -28,7 +28,7 @@ function createWindow(): void {
 
   require('dotenv').config()
 
-  mainWindow.webContents.openDevTools();
+ 
 
   mainWindow.on('ready-to-show', () => {
     mainWindow.show()
