@@ -1,13 +1,15 @@
 .navbar{
     position:fixed;
-    background-color: rgba(0, 0, 0, 0.527);
+    background-color: rgb(0, 108, 190);
     width: 100%;
     padding: 10px;
     color: white;
     display: flex;
     align-items: center;
     justify-content: space-between;
+    transition: background-color 0.2s ease;
 }
+
 
 .navbar ul{
     display: flex;
@@ -19,22 +21,29 @@
     list-style: none;
 
 }
+
+.navbar li::after, .navbar a::after{
+    content: '';
+    width: 0%;
+    height: 3px;
+    background: white;
+    display: block;
+    margin: auto;
+    transition: 0.3s;
+
+}
 .navbar a, .admin{
     text-decoration: none;
     color: white;
     font-size: large;
-    transition: color 0.5s ease;
-}
-
-.navbar a:hover, .admin:hover{
-    
-    color: gold;
     
 }
 
+.navbar a:hover::after, .admin:hover::after{  
+    width: 100%;
+}
 
-.admin {
-    
+.admin {   
     margin-right: 40px;
     cursor: pointer;
 }
