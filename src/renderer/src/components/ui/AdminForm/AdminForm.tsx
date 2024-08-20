@@ -12,19 +12,23 @@ export default function AdminForm() {
 
     const navigate = useNavigate()
 
-    const [password, setPassword] = useState('')
+    const [user, setUser] = useState({
+      username : '',
+      password : ''
+    })
 
     const handleSubmit = ( e : React.FormEvent<HTMLFormElement>) => {
 
         e.preventDefault()
     
-        if (password === '') {
+        if (user.password === '' || user.username === '') {
           toast.error("Todos Los Campos Son Requeridos")
           return
         }
 
-        // @ts-ignore (define in dts)
-        if (password !== window.env.VITE_PASSWORD_ADMIN){
+        
+        if (user.password !== import.meta.env.VITE_PASSWORD_ADMIN && user.username !== import.meta.env.RENDERER_VITE_USER){
+
             toast.error("Contraseña incorrecta")
             return
         }
@@ -41,23 +45,38 @@ export default function AdminForm() {
       }
       
     const handleChange = (e : React.ChangeEvent<HTMLInputElement>) =>{
-        setPassword(e.target.value)
+        setUser({
+          ...user,
+          [e.target.id] : e.target.value
+        })
+
+        console.log(user)
     }
 
 
   return (
     <form className={styles.adminFormcont} onSubmit={handleSubmit} >
-       
+        <div className={styles.div}>
+            <label htmlFor="username">Usuario</label>
+            <input 
+              type={"text"} 
+              className=""
+              id="username"
+              defaultValue={user.username}
+              onChange={handleChange}
+            />
+        </div>
         <div className={styles.div}>
             <label htmlFor="password">Contraseña</label>
             <input 
               type={"text"} 
               className=""
-              id="pasword"
-              defaultValue={password}
+              id="password"
+              defaultValue={user.password}
               onChange={handleChange}
             />
         </div>
+        
         <input type="submit" value="Autenticar"/>
     </form>
   )

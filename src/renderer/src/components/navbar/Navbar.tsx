@@ -35,18 +35,18 @@ export default function Navbar() {
     <>
       <ToastContainer></ToastContainer>
       {state.auth ? (
-        <nav className={style.navbar}>
+      <nav className={style.navbar}>
         <ul>
           <li><Link to="/1">Inventario</Link></li>
 
           <li><Link to="/category">Categorias</Link></li>
          
           {state.products.length !== 0 && (
-             <li><div className={style.admin} onClick={handleSave}>Guardar Inventario</div></li>
+             <li className={style.admin} onClick={handleSave}>Guardar Inventario</li>
           )}
          
         </ul>
-        <div className={style.admin} onClick={cerrarsesion} >Cerrar Sesion</div>
+        <li className={style.admin} onClick={cerrarsesion} >Cerrar Sesion</li>
       </nav>
       ): (
         <nav className={style.navbar}>
@@ -54,7 +54,7 @@ export default function Navbar() {
         <ul>
           <li><Link to="/1">Inventario</Link></li>
         </ul>
-        <Link className={style.admin} to="/auth">Modo Administrador</Link>
+        <div><Link className={style.admin} to="/auth">Modo Administrador</Link></div>
       </nav>
 
       )}
