@@ -1,6 +1,6 @@
 # inventario-ferreteria
 
-An Electron application with React and TypeScript
+Aplicacion De electron para inventarios usando React y TypeScript
 
 ## Recommended IDE Setup
 
